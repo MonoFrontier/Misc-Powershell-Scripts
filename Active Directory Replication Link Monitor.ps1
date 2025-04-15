@@ -1,0 +1,9 @@
+﻿$domaincontroller = (Get-ADDomainController).HostName
+$Partner = (Get-ADReplicationPartnerMetadata -Target $domaincontroller).Partner
+$LRepSuccess = (Get-ADReplicationPartnerMetadata -Target $domaincontroller).LastReplicationSuccess
+$LRepAttempt = (Get-ADReplicationPartnerMetadata -Target $domaincontroller).LastReplicationAttempt
+$ConRepFail = (Get-ADReplicationPartnerMetadata -Target $domaincontroller).ConsecutiveReplicationFailures
+$IsSyncOnAtStart = (Get-ADReplicationPartnerMetadata -Target $domaincontroller).SyncOnStartup
+$RepFailTime = (Get-ADReplicationFailure -Target $domaincontroller).FirstFailureTime
+$RepFailCount = (Get-ADReplicationFailure -Target $domaincontroller).FailureCount
+$RepFailType = (Get-ADReplicationFailure -Target $domaincontroller).FailureType

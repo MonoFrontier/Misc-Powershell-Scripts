@@ -1,0 +1,9 @@
+﻿$hostname = (Get-WmiObject -Class Win32_Battery).PSComputerName
+$serial = (Get-WmiObject -Class Win32_Battery).DeviceID
+$charge = (Get-WmiObject -Class Win32_Battery).EstimatedChargeRemaining
+$time = (((Get-WmiObject -Class Win32_Battery).EstimatedRunTime) / 60)
+$critical = @(Get-WmiObject -Class "BatteryStatus" -Namespace "ROOT\WMI").Critical
+$ChargeRate = @(Get-WmiObject -Class "BatteryStatus" -Namespace "ROOT\WMI").ChargeRate
+$ChargingState = @(Get-WmiObject -Class "BatteryStatus" -Namespace "ROOT\WMI").Charging
+$DischargeRate = @(Get-WmiObject -Class "BatteryStatus" -Namespace "ROOT\WMI").DischargeRate
+$DischargingState = @(Get-WmiObject -Class "BatteryStatus" -Namespace "ROOT\WMI").Discharging
